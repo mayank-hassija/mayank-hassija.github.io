@@ -3,43 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profiles</title>
-    <link rel="icon" href="https://lh3.googleusercontent.com/ogw/AF2bZyhY_xbi6cHab7z0PbJNbO2XOIwH8VVNT5KypN9tG5rlxGc=s32-c-mo" type="image/png">
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/150673972?v=4" type="image/png">
+    <title>Mayank Hassija</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
             margin: 0;
-            padding: 20px;
-            text-align: center;
+            font-size: 16px;
         }
 
-        a {
-            text-decoration: none;
-            color: #333;
-            margin: 15px;
-            display: inline-block;
-            padding: 10px;
-            border: 2px solid transparent;
-            border-radius: 5px;
-            transition: background-color 0.3s, border-color 0.3s;
+        .circle-container {
+            position: relative;
+            width: 18em;
+            height: 18em;
+            border-radius: 50%;
+            overflow: hidden;
         }
 
-        a:hover {
-            background-color: #eaeaea;
-            border-color: #ccc;
+        .main-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
         }
 
-        img {
-            width: 20px;
-            height: 20px;
-            margin-left: 8px;
-            vertical-align: middle;
+        .circle-container:hover .main-image {
+            filter: blur(0.3em);
+        }
+
+        .hover-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .circle-container:hover .hover-content {
+            opacity: 1;
+        }
+
+        .small-image {
+            width: 3em;
+            height: 3em;
+            border-radius: 50%;
+            margin-bottom: 0.6em;
+        }
+
+        .text {
+            font-size: 1.5em;
+            color: #000;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            text-shadow: 
+                0.0625em 0.0625em 0 #ff0000,
+                -0.0625em -0.0625em 0 #ff0000,
+                0.0625em -0.0625em 0 #ff0000,
+                -0.0625em 0.0625em 0 #ff0000;
+            margin-bottom: 0.625em;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .social-button img {
+            width: 3em;
+            height: 3em;
+            filter: blur(0.1em);
+        }
+
+        .social-button:hover img {
+            filter: unset;
         }
     </style>
 </head>
 <body>
-    <a href="https://www.linkedin.com/in/mayank-hassija/">LinkedIn<img src="https://static.licdn.com/aero-v1/sc/h/8s162nmbcnfkg7a0k8nq9wwqo" alt="LinkedIn"></a>
-    <a href="https://github.com/mayank-hassija">GitHub<img src="https://github.com/fluidicon.png" alt="GitHub"></a>
+    <div class="circle-container">
+        <img src="https://avatars.githubusercontent.com/u/150673972?v=4" alt="Main Image" class="main-image">
+        <div class="hover-content">
+            <img src="https://avatars.githubusercontent.com/u/150673972?v=4" alt="Smaller Image" class="small-image">
+            <div class="text">Mayank Hassija</div>
+            <div class="links">
+                <button class="social-button" onclick="window.open('https://github.com/mayank-hassija', '_blank')">
+                    <img src="https://github.com/fluidicon.png" class="animate--rollover-image__object" alt="Follow us on GitHub">
+                </button>
+                <button class="social-button" onclick="window.open('https://www.linkedin.com/in/mayank-hassija/', '_blank')">
+                    <img src="https://static.licdn.com/aero-v1/sc/h/8s162nmbcnfkg7a0k8nq9wwqo" class="animate--rollover-image__object" alt="Follow us on LinkedIn">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeBackgroundColor() {
+            const currentColor = localStorage.getItem('backgroundColor');
+
+            if (currentColor === 'black') {
+                document.body.style.backgroundColor = 'white';
+                localStorage.setItem('backgroundColor', 'white');
+            } else {
+                document.body.style.backgroundColor = 'black';
+                localStorage.setItem('backgroundColor', 'black');
+            }
+        }
+
+        window.onload = changeBackgroundColor;
+    </script>
 </body>
 </html>
